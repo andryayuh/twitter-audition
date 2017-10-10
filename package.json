@@ -1,0 +1,27 @@
+{
+  "name": "twitter-audition",
+  "version": "1.0.0",
+  "description": "tweet search app",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -d --watch",
+    "start": "nodemon server/index.js"
+  },
+  "repository": "https://github.com/andryayuh/twitter-audition.git",
+  "author": "Andrea Miralles",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.5",
+    "path": "^0.12.7",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "semantic-ui-react": "^0.74.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.6.0"
+  }
+}
