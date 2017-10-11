@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -d --watch",
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "db-start": "mongod --dbpath ./db/data"
   },
   "repository": "https://github.com/andryayuh/twitter-audition.git",
   "author": "Andrea Miralles",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.16.2",
+    "bluebird": "^3.5.1",
     "express": "^4.15.5",
     "mongoose": "^4.12.1",
     "path": "^0.12.7",
