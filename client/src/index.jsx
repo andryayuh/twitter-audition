@@ -29,10 +29,17 @@ class App extends React.Component {
   }
 
   handleSearch(query) {
-    // axios.get('/search').then()
-    // this.setState({
-    //   tweets: e.target.value
-    // });
+    axios.get('/tweets', {
+      params: {
+        query: query
+      }
+    }).then(resp => {
+      console.log('!!!!!!!', resp.data);
+      console.log('?????', typeof resp.data);
+      this.setState({
+        tweets: resp.data
+      });
+    }).catch(err => { console.log('ERROR retrieving search results from db', err); });
   }
 
   render() {

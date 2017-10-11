@@ -9,12 +9,12 @@ class ItemEntry extends React.Component {
   render() {
     return (
       <Grid.Row>
-        <Grid.Column width={10}>
+        <Grid.Column width={8}>
           <Header as='h3' >
             <Label circular size='big' color={this.props.tweet.color}>{this.props.tweet.username.slice(0, 1).toUpperCase()}</Label>
             {'  '} {this.props.tweet.username}・{this.props.tweet.dateTime}
           </Header>
-          <Header.Subheader>{this.props.tweet.text}</Header.Subheader>
+          <Header.Subheader style={{marginLeft: '46px'}}>{this.props.tweet.text}</Header.Subheader>
         </Grid.Column>
       </Grid.Row>
     );

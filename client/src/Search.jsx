@@ -13,7 +13,6 @@ class Search extends React.Component {
 
   handleSearch(e) {
     const query = e.target.value.trim();
-    console.log('!!!!!', query);
     this.props.handleSearch(query);
   }
 
