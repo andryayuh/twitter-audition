@@ -3,7 +3,7 @@ const fs = require('fs');
 const Tweet = require('../../db/index');
 const getDate = require('./dateTimeHelper');
 
-const colors = ['red', 'orange', 'yellow', 'olive', 'green', 'teal', 'blue', 'violet', 'purple', 'pink', 'brown', 'grey', 'black'];
+const colors = ['red', 'orange', 'yellow', 'olive', 'green', 'teal', 'blue', 'violet', 'purple', 'pink', 'grey', 'black'];
 
 
 const createDBTweetObj = (tweets) => {
@@ -14,17 +14,13 @@ const createDBTweetObj = (tweets) => {
         username: el[el.length - 1],
         dateTime: getDate(el.slice(0, 2).join(' ')),
         text: el.slice(2, -1).join(' '),
-        color: colors[Math.floor(Math.random() * 12)]
+        color: colors[Math.floor(Math.random() * 11)]
       });
       tweet.save((err, tweet) => { if (err) { console.error(err); } });
     });
   }).catch(err => { console.log('ERR removing existing tweet document/adding tweets to db', err); });
 };
 
-// const getUsername = (tweet) => {
-//   let username = tweet[tweet.length - 1];
-//   return username;
-// };
 
 const modifyHaiku = (tweets, cb) => {
   // pop last el, which is an empty arr
@@ -41,22 +37,21 @@ const modifyHaiku = (tweets, cb) => {
       tweets[start].pop();
     }
   }
-  // simple check that all usernames (i.e. accounts) are nytimes (in place of tests)
-  // var usernames = tweets.map(el => el[el.length - 1]);
-  // var notNYT = usernames.filter(el => el !== 'nytimes');
-  // console.log(notNYT.length); //0
-
-  // simple check for concatenated tweetArray for haiku tweets (in place of tests)
-  // var fixed = tweets.map(el => el[0]);
-  // var notDate = tweets.filter(el => el[0].slice(0, 4) !== '2014');
-  // console.log(notDate.length) //0
-
-  createDBTweetObj(tweets);
 };
+
+// simple check that all usernames (i.e. accounts) are nytimes (in place of tests)
+// var usernames = tweets.map(el => el[el.length - 1]);
+// var notNYT = usernames.filter(el => el !== 'nytimes');
+// console.log(notNYT.length); //0
+
+// simple check for concatenated tweetArray for haiku tweets (in place of tests)
+// var fixed = tweets.map(el => el[0]);
+// var notDate = tweets.filter(el => el[0].slice(0, 4) !== '2014');
+// console.log(notDate.length) //0
+
 
 const splitWords = (data, cb) => {
   // remove extra spaces in each tweet, split by word, remove trailing space
-  console.log(data)
   let parsedTweet = data.map(tweet => tweet.replace(/\s\s+/g, ' ').split(' ').filter(el => el.length > 0));
   cb(parsedTweet, createDBTweetObj);
 };
@@ -65,7 +60,6 @@ const splitTweets = (err, data) => {
   // create 1 arr for each tweet
   if (err) { console.log('ERROR splitting tweets', err); }
   let input = data.toString().split('\n'); 
-  console.log(input)
   splitWords(input, modifyHaiku);
 };
 
