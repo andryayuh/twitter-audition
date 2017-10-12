@@ -19,7 +19,7 @@ class Search extends React.Component {
   render() {
     return (
       <div style={{textAlign: 'center', marginTop: '50px', marginBottom: '30px'}}>
-        <Input size='big' placeholder='Search'
+        <Input fluid size='big' placeholder='Search'
           onKeyPress={e => { if (e.key === 'Enter') { this.handleSearch(e); } }}
           icon={{ name: 'search', circular: true }} />
       </div>

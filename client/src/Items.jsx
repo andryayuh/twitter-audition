@@ -8,7 +8,7 @@ const Items = (props) => {
     <div style={{width: '900px'}}>
       <Grid celled>
         {props.tweets.map((tweet, key) => 
-          <ItemEntry tweet={tweet} key={key} />
+          <ItemEntry tweet={tweet} key={key} handleSearch={props.handleSearch}/>
         )}
       </Grid>
     </div>
